@@ -61,6 +61,7 @@ export default function AppSidebar({onSignOut}: {onSignOut: () => void}) {
                                 <SidebarMenuButton>
                                     <Avatar>
                                         <AvatarImage src={authUser.avatar} alt={`@${authUser.id}`}/>
+                                        <AvatarFallback>UA</AvatarFallback>
                                     </Avatar>
                                     {authUser.name}
                                     <ChevronUp/>
