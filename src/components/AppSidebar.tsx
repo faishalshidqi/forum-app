@@ -6,9 +6,11 @@ import {
     SidebarGroupLabel,
     SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem
 } from "@/components/ui/sidebar.tsx";
-import {Home, Settings} from "lucide-react";
+import {ChevronUp, Home, LucideLogOut, Settings, User} from "lucide-react";
+import {useAppSelector} from "@/states";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu.tsx";
 
-export default function AppSidebar() {
+export default function AppSidebar({onSignOut}: {onSignOut: () => void}) {
     const items = [
         {
             title: 'Home',
@@ -22,6 +24,8 @@ export default function AppSidebar() {
         },
 
     ]
+
+    const authUser = useAppSelector(state => state.auth)
 
     return (
         <Sidebar variant="floating" collapsible='icon'>
@@ -46,9 +50,28 @@ export default function AppSidebar() {
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
-                <SidebarGroup/>
             </SidebarContent>
-            <SidebarFooter/>
+            <SidebarFooter>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <SidebarMenuButton>
+                                    <User/>
+                                    {authUser.name}
+                                    <ChevronUp/>
+                                </SidebarMenuButton>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                                <DropdownMenuItem>
+                                    <LucideLogOut/>
+                                    <a onClick={onSignOut}>Sign Out</a>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    </SidebarMenuItem>
+                </SidebarMenu>
+            </SidebarFooter>
         </Sidebar>
     )
 }
