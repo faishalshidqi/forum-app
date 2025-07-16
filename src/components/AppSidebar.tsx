@@ -60,7 +60,7 @@ export default function AppSidebar({onSignOut}: {onSignOut: () => void}) {
                             <DropdownMenuTrigger asChild>
                                 <SidebarMenuButton>
                                     <Avatar>
-                                        <AvatarImage src={authUser.avatar}/>
+                                        <AvatarImage src={authUser.avatar} alt={`@${authUser.id}`}/>
                                     </Avatar>
                                     {authUser.name}
                                     <ChevronUp/>
