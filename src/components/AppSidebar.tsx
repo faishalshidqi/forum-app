@@ -10,7 +10,7 @@ import {ChevronUp, Home, LucideLogOut, Settings} from "lucide-react";
 import {useAppSelector} from "@/states";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu.tsx";
 import {Avatar} from "@/components/ui/avatar.tsx";
-import {AvatarImage} from "@radix-ui/react-avatar";
+import {AvatarFallback, AvatarImage} from "@radix-ui/react-avatar";
 
 export default function AppSidebar({onSignOut}: {onSignOut: () => void}) {
     const items = [
