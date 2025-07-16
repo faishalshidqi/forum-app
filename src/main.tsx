@@ -7,15 +7,12 @@ import App from './App.tsx'
 import {Provider} from "react-redux";
 import {store} from "./states";
 import {BrowserRouter} from "react-router-dom";
-import {SidebarProvider} from "@/components/ui/sidebar.tsx";
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
       <BrowserRouter>
         <StrictMode>
-            <SidebarProvider>
-                <App />
-            </SidebarProvider>
+            <App />
         </StrictMode>
       </BrowserRouter>
   </Provider>
