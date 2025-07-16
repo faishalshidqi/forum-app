@@ -25,9 +25,9 @@ export function asyncPreloadProcess() {
     return async (dispatch: (arg0: { type: string; payload: { user: { email: string; name: string; }; } | { preload: boolean; }; }) => void) => {
         try {
             const {data} = await api.getMyProfile()
-            dispatch(setUserActionCreator({name: data.user.name, email: data.user.email}))
+            dispatch(setUserActionCreator({...data.user}))
         } catch {
-            dispatch(setUserActionCreator({email: '', name: ''}))
+            dispatch(setUserActionCreator({email: '', name: '', id: '', avatar: ''}))
         } finally {
             dispatch(setPreloadActionCreator(false))
         }

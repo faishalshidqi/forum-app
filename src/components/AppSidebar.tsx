@@ -6,9 +6,11 @@ import {
     SidebarGroupLabel,
     SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem
 } from "@/components/ui/sidebar.tsx";
-import {ChevronUp, Home, LucideLogOut, Settings, User} from "lucide-react";
+import {ChevronUp, Home, LucideLogOut, Settings} from "lucide-react";
 import {useAppSelector} from "@/states";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu.tsx";
+import {Avatar} from "@/components/ui/avatar.tsx";
+import {AvatarImage} from "@radix-ui/react-avatar";
 
 export default function AppSidebar({onSignOut}: {onSignOut: () => void}) {
     const items = [
@@ -57,7 +59,9 @@ export default function AppSidebar({onSignOut}: {onSignOut: () => void}) {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <SidebarMenuButton>
-                                    <User/>
+                                    <Avatar>
+                                        <AvatarImage src={authUser.avatar}/>
+                                    </Avatar>
                                     {authUser.name}
                                     <ChevronUp/>
                                 </SidebarMenuButton>

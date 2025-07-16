@@ -1,5 +1,5 @@
 import LoginInput from "@/components/LoginInput";
-import {store, useAppDispatch} from "@/states";
+import {useAppDispatch} from "@/states";
 import {asyncSetAuthUser} from "@/states/authUser/action.ts";
 
 export function LoginPage() {
@@ -7,7 +7,6 @@ export function LoginPage() {
 
     const onLogin = ({email, password}: { email: string, password: string }) => {
         dispatch(asyncSetAuthUser({email, password}))
-        console.log('login page', store.getState())
     }
 
     return (

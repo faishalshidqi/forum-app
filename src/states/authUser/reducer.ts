@@ -6,6 +6,8 @@ interface setAuthUser {
         user: {
             email: string,
             name: string,
+            id: string,
+            avatar: string,
         }
     }
 }
@@ -16,19 +18,21 @@ interface unsetAuthUser {
         user: {
             email: string,
             name: string,
+            id: string,
+            avatar: string,
         }
     }
 }
 
 export type AuthUserAction = setAuthUser | unsetAuthUser
 
-export default function authReducer(user = {name: '', email: ''}, action: AuthUserAction): {name: string, email: string} {
+export default function authReducer(user = {name: '', email: '', id: '', avatar: ''}, action: AuthUserAction) {
     switch (action.type) {
         case ActionType.SET_USER:
             return action.payload.user;
         case ActionType.UNSET_AUTH_USER:
         {
-            return {email: '', name: ''}
+            return {email: '', name: '', id: '', avatar: ''}
         }
         default:
             return user
